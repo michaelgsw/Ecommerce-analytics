@@ -1,0 +1,159 @@
+table dashboard_categories
+	lineageTag: 6987c602-2306-4ee5-8ab9-e05073c80ee0
+
+	measure 'Category Sales (source units)' =
+			IF(HASONEVALUE(dashboard_categories[customer_type]),
+			   DIVIDE(SUM(dashboard_categories[item_sales_hundredths]), 100))
+		formatString: #,##0.00
+		lineageTag: 3285c0d5-7950-4cde-9b61-6f292b48503f
+
+	measure 'Category Sales Share' =
+			IF(HASONEVALUE(dashboard_categories[customer_type]),
+			   DIVIDE(SUM(dashboard_categories[sales_share_percent_numerator]),
+			          100 * MAX(dashboard_categories[sales_share_percent_denominator])))
+		formatString: 0.00%
+		lineageTag: 966c77c3-6fa0-412e-8a6f-d5bfa6ef1460
+
+	measure 'Category Order Count' =
+			IF(HASONEVALUE(dashboard_categories[customer_type]) && HASONEVALUE(dashboard_categories[category_key]),
+			   MAX(dashboard_categories[category_orders]))
+		formatString: #,##0
+		lineageTag: 8a024c10-3dc6-4fa8-a8c2-c801d613f5a5
+
+	measure 'Category Customer Count' =
+			IF(HASONEVALUE(dashboard_categories[customer_type]) && HASONEVALUE(dashboard_categories[category_key]),
+			   MAX(dashboard_categories[category_customers]))
+		formatString: #,##0
+		lineageTag: 8021c100-9298-445a-8aa2-b1096be6e984
+
+	column customer_type
+		dataType: string
+		lineageTag: ccb51051-cb25-4566-95d3-304f06b37c8f
+		summarizeBy: none
+		sourceColumn: customer_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category_name
+		dataType: string
+		lineageTag: e6ad5c83-c722-4f89-a6e5-27be20c1b407
+		summarizeBy: none
+		sourceColumn: product_category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category_name_english
+		dataType: string
+		lineageTag: 9eb8597b-0f0d-4d51-9fa9-61c90bc7a42f
+		summarizeBy: none
+		sourceColumn: product_category_name_english
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_key
+		dataType: string
+		lineageTag: 8ca9ae94-b58c-47ae-a179-0dd1b48c00ec
+		summarizeBy: none
+		sourceColumn: category_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_display
+		dataType: string
+		lineageTag: 8da44d4d-5d70-43b1-93b4-f3835f5d28cc
+		summarizeBy: none
+		sourceColumn: category_display
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_category_missing
+		dataType: int64
+		formatString: 0
+		lineageTag: cef36e80-8c4d-4b0f-8931-0da158197100
+		summarizeBy: sum
+		sourceColumn: flag_category_missing
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_translation_missing
+		dataType: int64
+		formatString: 0
+		lineageTag: b49aa348-0a5e-454e-82f3-daaabe4b63f9
+		summarizeBy: sum
+		sourceColumn: flag_translation_missing
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_sales_hundredths
+		dataType: int64
+		formatString: 0
+		lineageTag: 4349382c-56f9-4b06-8e6b-c328a11104b6
+		summarizeBy: sum
+		sourceColumn: item_sales_hundredths
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_orders
+		dataType: int64
+		formatString: 0
+		lineageTag: 90f00988-a657-42ea-8583-469e0bf731d9
+		summarizeBy: sum
+		sourceColumn: category_orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column items_sold
+		dataType: int64
+		formatString: 0
+		lineageTag: ef7bd9fd-13df-4ba9-ab58-15cf498de87c
+		summarizeBy: sum
+		sourceColumn: items_sold
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: 749fab54-700b-40fc-9189-ab1c483e29e5
+		summarizeBy: sum
+		sourceColumn: category_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d554fbb-db2b-46d7-8f47-f141d3b026fd
+		summarizeBy: sum
+		sourceColumn: sales_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales_share_percent_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: 98de30c2-8a46-47b5-92c4-4bb2cecf53a9
+		summarizeBy: sum
+		sourceColumn: sales_share_percent_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales_share_percent_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: d570edfc-7ab7-4e6a-917b-3ce182def1f9
+		summarizeBy: sum
+		sourceColumn: sales_share_percent_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dashboard_categories = m
+		mode: import
+		source =
+				let
+				    Source = DashboardCsv("dashboard_categories")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

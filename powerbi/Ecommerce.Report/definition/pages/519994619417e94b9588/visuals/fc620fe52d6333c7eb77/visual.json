@@ -1,0 +1,357 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "fc620fe52d6333c7eb77",
+  "position": {
+    "x": 16,
+    "y": 136,
+    "z": 0,
+    "height": 204,
+    "width": 936,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_cohorts"
+                    }
+                  },
+                  "Property": "cohort_month"
+                }
+              },
+              "queryRef": "dashboard_cohorts.cohort_month",
+              "nativeQueryRef": "cohort_month",
+              "active": true,
+              "displayName": "Acquisition cohort"
+            }
+          ],
+          "showAll": true
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_cohorts"
+                        }
+                      },
+                      "Property": "cohort_date"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(dashboard_cohorts.cohort_date)",
+              "nativeQueryRef": "Min of cohort_date",
+              "displayName": "Acquisition cohort date",
+              "format": "yyyy-MM-dd"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_cohorts"
+                        }
+                      },
+                      "Property": "flag_initial_boundary_cohort"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_cohorts.flag_initial_boundary_cohort)",
+              "nativeQueryRef": "Max of flag_initial_boundary_cohort",
+              "displayName": "Initial boundary cohort",
+              "format": "0"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_cohorts"
+                        }
+                      },
+                      "Property": "flag_terminal_boundary_cohort"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_cohorts.flag_terminal_boundary_cohort)",
+              "nativeQueryRef": "Max of flag_terminal_boundary_cohort",
+              "displayName": "Terminal boundary cohort",
+              "format": "0"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_cohorts"
+                        }
+                      },
+                      "Property": "flag_insufficient_three_month_coverage"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_cohorts.flag_insufficient_three_month_coverage)",
+              "nativeQueryRef": "Max of flag_insufficient_three_month_coverage",
+              "displayName": "Insufficient M1-M3 coverage",
+              "format": "0"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_cohorts"
+                    }
+                  },
+                  "Property": "New Cohort Customers"
+                }
+              },
+              "queryRef": "dashboard_cohorts.New Cohort Customers",
+              "nativeQueryRef": "New Cohort Customers",
+              "displayName": "New cohort customers",
+              "format": "#,##0"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dashboard_cohorts"
+                      }
+                    },
+                    "Property": "cohort_date"
+                  }
+                },
+                "Function": 3
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "axisType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Categorical'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10.5D"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "preferredCategoryWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "defaultColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#168C82'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'First observed completed-purchase cohorts'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter6af3fd4cb3bdbfc0ec6babc4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dashboard_cohorts"
+              }
+            },
+            "Property": "month_index"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "dashboard_cohorts",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "month_index"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "0L"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true
+      }
+    ]
+  }
+}

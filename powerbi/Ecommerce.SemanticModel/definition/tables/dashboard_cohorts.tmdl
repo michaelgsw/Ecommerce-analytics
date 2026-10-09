@@ -1,0 +1,234 @@
+table dashboard_cohorts
+	lineageTag: f50bddbd-ac13-428a-a47c-5cf968b6ab07
+
+	measure 'New Cohort Customers' =
+			CALCULATE(SUM(dashboard_cohorts[new_customers]), dashboard_cohorts[month_index] = 0,
+			          dashboard_cohorts[coverage_status] = "baseline_membership")
+		formatString: #,##0
+		lineageTag: 558a09f9-068e-4ce5-bb23-5f6e91d2fb06
+
+	measure 'Eligible Three-Month Cohorts' =
+			CALCULATE(DISTINCTCOUNT(dashboard_cohorts[cohort_month]), dashboard_cohorts[month_index] = 0,
+			          dashboard_cohorts[flag_insufficient_three_month_coverage] = 0,
+			          dashboard_cohorts[coverage_status] = "baseline_membership")
+		formatString: #,##0
+		lineageTag: 21771e70-44de-4cd8-a5b8-01badeeec98f
+
+	measure 'Eligible Three-Month Customers' = CALCULATE([New Cohort Customers], dashboard_cohorts[flag_insufficient_three_month_coverage] = 0)
+		formatString: #,##0
+		lineageTag: 4e5a1ec3-e17f-4b9e-9ccb-67b89bf0ae5b
+
+	measure 'Cohort Coverage Note' =
+			VAR Cohorts = [Eligible Three-Month Cohorts]
+			RETURN
+			IF(ISBLANK(Cohorts) || Cohorts = 0,
+			   "No selected cohorts have common M1-M3 coverage",
+			   FORMAT(Cohorts, "0") & " eligible cohorts; " & FORMAT([Eligible Three-Month Customers], "#,##0") & " original customers")
+		lineageTag: c0db997c-1b5f-4da5-b777-c5d096613498
+
+	measure 'M1 Return Rate' =
+			CALCULATE(
+			    DIVIDE(SUM(dashboard_cohorts[retention_percent_numerator]),
+			           100 * SUM(dashboard_cohorts[retention_percent_denominator])),
+			    dashboard_cohorts[month_index] = 1,
+			    dashboard_cohorts[flag_insufficient_three_month_coverage] = 0,
+			    dashboard_cohorts[coverage_status] = "interior_observed")
+		formatString: 0.000%
+		lineageTag: ec577d1d-4538-4924-8433-5a16404ab401
+
+	measure 'M2 Return Rate' =
+			CALCULATE(
+			    DIVIDE(SUM(dashboard_cohorts[retention_percent_numerator]),
+			           100 * SUM(dashboard_cohorts[retention_percent_denominator])),
+			    dashboard_cohorts[month_index] = 2,
+			    dashboard_cohorts[flag_insufficient_three_month_coverage] = 0,
+			    dashboard_cohorts[coverage_status] = "interior_observed")
+		formatString: 0.000%
+		lineageTag: fd9e60a5-c037-4627-a014-d0523171ab77
+
+	measure 'M3 Return Rate' =
+			CALCULATE(
+			    DIVIDE(SUM(dashboard_cohorts[retention_percent_numerator]),
+			           100 * SUM(dashboard_cohorts[retention_percent_denominator])),
+			    dashboard_cohorts[month_index] = 3,
+			    dashboard_cohorts[flag_insufficient_three_month_coverage] = 0,
+			    dashboard_cohorts[coverage_status] = "interior_observed")
+		formatString: 0.000%
+		lineageTag: 7c287bb6-ffba-49ba-87cc-415568173448
+
+	measure 'Cohort Cell Return Rate' =
+			VAR CoverageStatus = SELECTEDVALUE(dashboard_cohorts[coverage_status])
+			RETURN
+			IF(
+			    HASONEVALUE(dashboard_cohorts[cohort_month])
+			        && HASONEVALUE(dashboard_cohorts[month_index])
+			        && CoverageStatus = "interior_observed",
+			    DIVIDE(
+			        MAX(dashboard_cohorts[retention_percent_numerator]),
+			        100 * MAX(dashboard_cohorts[retention_percent_denominator])
+			    ),
+			    BLANK()
+			)
+		formatString: 0.00%
+		lineageTag: c7444610-75f0-4866-9edb-f1e98a934b4b
+
+	measure 'Cohort Cell Text' =
+			VAR CoverageStatus =
+			    SELECTEDVALUE(dashboard_cohorts[coverage_status])
+			RETURN
+			IF(
+			    HASONEVALUE(dashboard_cohorts[cohort_month])
+			        && HASONEVALUE(dashboard_cohorts[month_index]),
+			    SWITCH(
+			        CoverageStatus,
+			        "future_unobserved", "FU",
+			        "calendar_gap", "CG",
+			        "terminal_partial", "TP",
+			        "baseline_membership", "M0",
+			        "interior_observed", FORMAT([Cohort Cell Return Rate], "0.00%"),
+			        BLANK()
+			    ),
+			    BLANK()
+			)
+		lineageTag: 42261d74-e2b5-4279-8157-cd09a2f9f69b
+
+	measure 'Cohort Cell Background' =
+			VAR CoverageStatus = SELECTEDVALUE(dashboard_cohorts[coverage_status])
+			VAR Rate = [Cohort Cell Return Rate]
+			RETURN
+			SWITCH(CoverageStatus,
+			    "future_unobserved", "#E5E7EB",
+			    "calendar_gap", "#FFF2CC",
+			    "terminal_partial", "#EDE4F7",
+			    "baseline_membership", "#DCE6F1",
+			    "interior_observed", SWITCH(TRUE(), Rate >= 0.01, "#8AC7B8", Rate >= 0.005, "#B9DDCC",
+			                                         Rate > 0, "#DDEFE4", "#F3FAF5"),
+			    "#FFFFFF")
+		lineageTag: 0efb5e9a-1b98-4087-ad47-df81555423eb
+
+	column cohort_month
+		dataType: string
+		lineageTag: ac9735a1-ef69-4843-be6b-af021e2f0b07
+		summarizeBy: none
+		sourceColumn: cohort_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column new_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: 14d40d8b-df07-4497-bbc1-ea06a7a634b2
+		summarizeBy: sum
+		sourceColumn: new_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_index
+		dataType: int64
+		formatString: 0
+		lineageTag: a82499d0-7a76-488c-8d09-976ad0579a58
+		summarizeBy: sum
+		sourceColumn: month_index
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_month
+		dataType: string
+		lineageTag: 1890f5d5-420d-42d7-b8f8-f69e9e4866c6
+		summarizeBy: none
+		sourceColumn: target_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column coverage_status
+		dataType: string
+		lineageTag: 5c70f805-170a-4327-aecf-b7130dce17cf
+		summarizeBy: none
+		sourceColumn: coverage_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column observed_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: e24a936e-7500-4379-b719-73c6354ef566
+		summarizeBy: sum
+		sourceColumn: observed_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column returning_customers_for_rate
+		dataType: int64
+		formatString: 0
+		lineageTag: fbcf0725-8ce1-4260-bc87-2163c59ba3f8
+		summarizeBy: sum
+		sourceColumn: returning_customers_for_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column retention_percent_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e3b9fee-5f64-4a30-85a3-149e119b50bd
+		summarizeBy: sum
+		sourceColumn: retention_percent_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column retention_percent_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: 698a7212-d0b3-4e7a-9761-9166cb32bd8c
+		summarizeBy: sum
+		sourceColumn: retention_percent_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column cohort_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 67f8ed85-76ba-4f08-b662-0e45cc2f3144
+		summarizeBy: none
+		sourceColumn: cohort_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column flag_insufficient_three_month_coverage
+		dataType: int64
+		formatString: 0
+		lineageTag: ad8eded7-5073-42a5-b041-58ecefa12a62
+		summarizeBy: sum
+		sourceColumn: flag_insufficient_three_month_coverage
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_initial_boundary_cohort
+		dataType: int64
+		formatString: 0
+		lineageTag: eb9c2347-e526-4245-8abd-a7f3e5b1f789
+		summarizeBy: sum
+		sourceColumn: flag_initial_boundary_cohort
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_terminal_boundary_cohort
+		dataType: int64
+		formatString: 0
+		lineageTag: 94981c6d-073a-4eae-9071-3020c4dfa27e
+		summarizeBy: sum
+		sourceColumn: flag_terminal_boundary_cohort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dashboard_cohorts = m
+		mode: import
+		source =
+				let
+				    Source = DashboardCsv("dashboard_cohorts")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

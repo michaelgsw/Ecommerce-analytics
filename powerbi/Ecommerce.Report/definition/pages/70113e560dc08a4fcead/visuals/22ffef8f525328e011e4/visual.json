@@ -1,0 +1,231 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "22ffef8f525328e011e4",
+  "position": {
+    "x": 16,
+    "y": 136,
+    "z": 0,
+    "height": 264,
+    "width": 504,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_customer_segments"
+                    }
+                  },
+                  "Property": "customer_type"
+                }
+              },
+              "queryRef": "dashboard_customer_segments.customer_type",
+              "nativeQueryRef": "customer_type",
+              "active": true,
+              "displayName": "Customer type"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_customer_segments"
+                    }
+                  },
+                  "Property": "Segment Customer Share"
+                }
+              },
+              "queryRef": "dashboard_customer_segments.Segment Customer Share",
+              "nativeQueryRef": "Segment Customer Share",
+              "displayName": "Customer share"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_segments"
+                        }
+                      },
+                      "Property": "completed_orders"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dashboard_customer_segments.completed_orders)",
+              "nativeQueryRef": "Sum of completed_orders",
+              "displayName": "Completed orders"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_segments"
+                        }
+                      },
+                      "Property": "customer_share_percent_numerator"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dashboard_customer_segments.customer_share_percent_numerator)",
+              "nativeQueryRef": "Sum of customer_share_percent_numerator",
+              "displayName": "Customer-share numerator"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_segments"
+                        }
+                      },
+                      "Property": "customer_share_percent_denominator"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_customer_segments.customer_share_percent_denominator)",
+              "nativeQueryRef": "Max of customer_share_percent_denominator",
+              "displayName": "Customer-share denominator"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_customer_segments"
+                    }
+                  },
+                  "Property": "Segment Customers"
+                }
+              },
+              "queryRef": "dashboard_customer_segments.Segment Customers",
+              "nativeQueryRef": "Segment Customers",
+              "displayName": "Customers"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dashboard_customer_segments"
+                  }
+                },
+                "Property": "customer_type"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Observed customers by purchase type'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

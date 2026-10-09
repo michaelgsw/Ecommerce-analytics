@@ -1,0 +1,219 @@
+table dashboard_customer_segments
+	lineageTag: f2a7d1da-4fb7-490c-a3a3-111ea5726401
+
+	measure 'Segment Customers' = SUM(dashboard_customer_segments[customers])
+		formatString: #,##0
+		lineageTag: 4607e40c-1018-44a8-9eb6-23320abbdddd
+
+	measure 'Segment Sales (source units)' = DIVIDE(SUM(dashboard_customer_segments[item_sales_hundredths]), 100)
+		formatString: #,##0.00
+		lineageTag: 2156cea2-c9f8-41bd-89f1-a8129860c025
+
+	measure 'Segment Customer Share' =
+			DIVIDE(SUM(dashboard_customer_segments[customer_share_percent_numerator]),
+			       100 * MAX(dashboard_customer_segments[customer_share_percent_denominator]))
+		formatString: 0.00%
+		lineageTag: 09f21721-1ed6-4425-a925-5dfac7e4b713
+
+	measure 'Segment Sales Share' =
+			DIVIDE(SUM(dashboard_customer_segments[sales_share_percent_numerator]),
+			       100 * MAX(dashboard_customer_segments[sales_share_percent_denominator]))
+		formatString: 0.00%
+		lineageTag: 7326d851-c0d7-41c1-9a90-2df325c53087
+
+	measure 'Average Customer Sales (source units)' =
+			DIVIDE(SUM(dashboard_customer_segments[average_customer_sales_hundredths_numerator]),
+			       100 * SUM(dashboard_customer_segments[average_customer_sales_hundredths_denominator]))
+		formatString: #,##0.00
+		lineageTag: 3cf95b7b-8a26-41b2-ba9b-2075b7607e8d
+
+	measure 'Segment AOV (source units)' =
+			DIVIDE(SUM(dashboard_customer_segments[average_order_value_hundredths_numerator]),
+			       100 * SUM(dashboard_customer_segments[average_order_value_hundredths_denominator]))
+		formatString: #,##0.00
+		lineageTag: 2db221de-004b-4e46-8d68-326589fed54c
+
+	measure 'High Value One-Time Customers' =
+			CALCULATE([Segment Customers], REMOVEFILTERS(dashboard_customer_segments),
+			          dashboard_customer_segments[segment] = "High-value one-time")
+		formatString: #,##0
+		lineageTag: 41fdb668-2b34-4334-a05d-f36dbf07c09c
+
+	measure 'High Value One-Time Sales Share' =
+			CALCULATE([Segment Sales Share], REMOVEFILTERS(dashboard_customer_segments),
+			          dashboard_customer_segments[segment] = "High-value one-time")
+		formatString: 0.00%
+		lineageTag: 04fecb42-d96b-4347-bf65-435f65cb551d
+
+	column segment
+		dataType: string
+		lineageTag: 8a6f8e96-331b-4e54-b694-a1107fbc6ff2
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column customers
+		dataType: int64
+		formatString: 0
+		lineageTag: 491c0e13-d82a-4c45-a56d-683d41ed52d8
+		summarizeBy: sum
+		sourceColumn: customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column completed_orders
+		dataType: int64
+		formatString: 0
+		lineageTag: 42f91ab3-7093-4cd0-a7b9-120ec29bc0d0
+		summarizeBy: sum
+		sourceColumn: completed_orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_sales_hundredths
+		dataType: int64
+		formatString: 0
+		lineageTag: 212c339d-b047-43a0-b55c-cad5b85f36f8
+		summarizeBy: sum
+		sourceColumn: item_sales_hundredths
+
+		annotation SummarizationSetBy = Automatic
+
+	column freight_hundredths
+		dataType: int64
+		formatString: 0
+		lineageTag: 1dd42d39-9acd-4efb-b46b-ef1949ce5efe
+		summarizeBy: sum
+		sourceColumn: freight_hundredths
+
+		annotation SummarizationSetBy = Automatic
+
+	column average_customer_sales_hundredths_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: 413fa1fd-b6f8-46b5-8e85-6251f1168a67
+		summarizeBy: sum
+		sourceColumn: average_customer_sales_hundredths_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column average_customer_sales_hundredths_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: c8a1c716-1fcb-4bff-b36d-6e3b7e99b278
+		summarizeBy: sum
+		sourceColumn: average_customer_sales_hundredths_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column average_order_value_hundredths_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: 79dc8a8f-5eba-41e8-b60a-345199a8f9ef
+		summarizeBy: sum
+		sourceColumn: average_order_value_hundredths_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column average_order_value_hundredths_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d785254-355a-457e-acb1-07d9eb09f028
+		summarizeBy: sum
+		sourceColumn: average_order_value_hundredths_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_share_percent_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: 63fc69c5-fa8a-491d-b402-8af17c80099e
+		summarizeBy: sum
+		sourceColumn: customer_share_percent_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_share_percent_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: 69371b26-eac1-4287-88c7-4d4118437be2
+		summarizeBy: sum
+		sourceColumn: customer_share_percent_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales_share_percent_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a31b142-3e7a-4824-8fe4-043356678934
+		summarizeBy: sum
+		sourceColumn: sales_share_percent_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column sales_share_percent_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: 9967b9de-2586-4cc0-b750-fa916a753428
+		summarizeBy: sum
+		sourceColumn: sales_share_percent_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column high_value_threshold_hundredths_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: 02ff1e5d-9b61-43a9-ae2e-df51f6640173
+		summarizeBy: sum
+		sourceColumn: high_value_threshold_hundredths_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column high_value_threshold_hundredths_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: 1dc65a06-b5a4-4b7c-92ee-66fbbfa44c98
+		summarizeBy: sum
+		sourceColumn: high_value_threshold_hundredths_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column observation_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f162ecee-5a28-46ef-a12a-aaad4b45ef7c
+		summarizeBy: none
+		sourceColumn: observation_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column customer_type
+		dataType: string
+		lineageTag: 7c164c9b-c6d1-4a72-a6ae-952d5669c4a9
+		summarizeBy: none
+		sourceColumn: customer_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column highlight_high_value_one_time
+		dataType: int64
+		formatString: 0
+		lineageTag: ccca219d-abb8-4077-84c8-21da303d2475
+		summarizeBy: sum
+		sourceColumn: highlight_high_value_one_time
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dashboard_customer_segments = m
+		mode: import
+		source =
+				let
+				    Source = DashboardCsv("dashboard_customer_segments")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

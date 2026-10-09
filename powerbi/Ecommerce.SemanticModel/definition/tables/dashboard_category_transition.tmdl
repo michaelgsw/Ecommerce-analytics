@@ -1,0 +1,101 @@
+table dashboard_category_transition
+	lineageTag: b848cca6-ec71-4b88-a320-dc44cef45ba8
+
+	measure 'First-to-Second Transition Count' = SUM(dashboard_category_transition[order_transitions])
+		formatString: #,##0
+		lineageTag: f0a6862d-eddf-4d59-99d0-5755b3591268
+
+	measure 'First-to-Second Transition Share' =
+			DIVIDE(SUM(dashboard_category_transition[transition_share_percent_numerator]),
+			       100 * MAX(dashboard_category_transition[transition_share_percent_denominator]))
+		formatString: 0.00%
+		lineageTag: 054acd0c-48a9-4847-a9d6-7abd1e379d51
+
+	column scope
+		dataType: string
+		lineageTag: ce9bb8be-38e1-4519-8f0f-af4cb1dabc8e
+		summarizeBy: none
+		sourceColumn: scope
+
+		annotation SummarizationSetBy = Automatic
+
+	column behavior
+		dataType: string
+		lineageTag: 52443787-f160-42a4-9056-613cf77a811f
+		summarizeBy: none
+		sourceColumn: behavior
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_transitions
+		dataType: int64
+		formatString: 0
+		lineageTag: e4e4c1d4-be94-44bf-a590-30eb4a496434
+		summarizeBy: sum
+		sourceColumn: order_transitions
+
+		annotation SummarizationSetBy = Automatic
+
+	column distinct_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e402891-a2d7-4731-9984-585fcfbbe14c
+		summarizeBy: sum
+		sourceColumn: distinct_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column tied_timestamp_transitions
+		dataType: int64
+		formatString: 0
+		lineageTag: c07d56d9-b955-44bd-b213-b30bbebff07c
+		summarizeBy: sum
+		sourceColumn: tied_timestamp_transitions
+
+		annotation SummarizationSetBy = Automatic
+
+	column transition_share_percent_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: c6ad3bd8-a4cc-4814-97f1-247ccb056f03
+		summarizeBy: sum
+		sourceColumn: transition_share_percent_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column transition_share_percent_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: 1dd82cc6-d942-4c79-ae44-dd0597b22e1b
+		summarizeBy: sum
+		sourceColumn: transition_share_percent_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column behavior_display
+		dataType: string
+		lineageTag: 21b44e04-dc46-4c5e-b3a9-ac03e4a2858d
+		summarizeBy: none
+		sourceColumn: behavior_display
+
+		annotation SummarizationSetBy = Automatic
+
+	column sort_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 174bb74a-e5bd-435f-9aca-2efa7195a34d
+		summarizeBy: sum
+		sourceColumn: sort_order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dashboard_category_transition = m
+		mode: import
+		source =
+				let
+				    Source = DashboardCsv("dashboard_category_transition")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

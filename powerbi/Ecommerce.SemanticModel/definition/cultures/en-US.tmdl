@@ -1,0 +1,1161 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "dashboard_customer_concentration.customer_share_needed_for_80_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_concentration",
+			          "ConceptualProperty": "Customer Share Needed for 80% Sales"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Customer share for 80% of sales": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_concentration.customers_needed_for_80_sales": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_concentration",
+			          "ConceptualProperty": "Customers Needed for 80% Sales"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Customers for 80% of sales": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_segments.high_value_onetime_sales_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_segments",
+			          "ConceptualProperty": "High Value One-Time Sales Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Share of full-history item sales": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_segments.high_value_onetime_customers": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_segments",
+			          "ConceptualProperty": "High Value One-Time Customers"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "High-value one-time customers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_segments.segment": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_segments",
+			          "ConceptualProperty": "segment"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Segment": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_segments.segment_customers": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_segments",
+			          "ConceptualProperty": "Segment Customers"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Customers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_segments.segment_customer_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_segments",
+			          "ConceptualProperty": "Segment Customer Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Customer share": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_segments.segment_sales_source_units": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_segments",
+			          "ConceptualProperty": "Segment Sales (source units)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Item sales": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Item sales (source units)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_segments.segment_sales_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_segments",
+			          "ConceptualProperty": "Segment Sales Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Sales share": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_segments.average_customer_sales_source_units": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_segments",
+			          "ConceptualProperty": "Average Customer Sales (source units)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Sales / customer": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Sales per customer": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_segments.segment_aov_source_units": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_segments",
+			          "ConceptualProperty": "Segment AOV (source units)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Sales / order": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Sales per completed order": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_categories.category_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_categories",
+			          "ConceptualProperty": "category_display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Product category": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Category": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Source category": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_categories.category_sales_source_units": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_categories",
+			          "ConceptualProperty": "Category Sales (source units)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Delivered item sales (source units)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Item sales (source units)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_categories.category_sales_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_categories",
+			          "ConceptualProperty": "Category Sales Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Share of all completed item sales": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Share of customer-type sales": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Sales share": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_categories.category_order_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_categories",
+			          "ConceptualProperty": "Category Order Count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Category delivered orders": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Delivered orders": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_kpis.observed_repeat_customer_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_kpis",
+			          "ConceptualProperty": "Observed Repeat Customer Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Observed repeat customer rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_kpis.delivered_order_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_kpis",
+			          "ConceptualProperty": "Delivered Order Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Delivered order rate - all orders": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_kpis.all_observed_orders": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_kpis",
+			          "ConceptualProperty": "All Observed Orders"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "All observed orders": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_kpis.unique_completed_customers": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_kpis",
+			          "ConceptualProperty": "Unique Completed Customers"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Unique completed customers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_kpis.completed_orders": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_kpis",
+			          "ConceptualProperty": "Completed Orders"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Completed orders": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_kpis.average_order_value_source_units": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_kpis",
+			          "ConceptualProperty": "Average Order Value (source units)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "AOV excluding freight (source units)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_kpis.observed_item_sales_source_units": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_kpis",
+			          "ConceptualProperty": "Observed Item Sales (source units)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Observed item sales (source units)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_monthly_sales.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_monthly_sales",
+			          "ConceptualProperty": "month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Purchase month": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_monthly_sales.coverage_status": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_monthly_sales",
+			          "ConceptualProperty": "coverage_status"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Coverage status": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_monthly_sales.monthly_chart_sales_source_units": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_monthly_sales",
+			          "ConceptualProperty": "Monthly Chart Sales (source units)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Delivered item sales (source units)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_monthly_sales.monthly_aov_source_units": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_monthly_sales",
+			          "ConceptualProperty": "Monthly AOV (source units)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Monthly AOV (source units)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_order_status.order_status": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_order_status",
+			          "ConceptualProperty": "order_status"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Order status": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_order_status.status_order_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_order_status",
+			          "ConceptualProperty": "Status Order Count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Observed orders": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_order_status.status_share_of_all_orders": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_order_status",
+			          "ConceptualProperty": "Status Share of All Orders"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Share of all observed orders": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_segments.customer_type": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_segments",
+			          "ConceptualProperty": "customer_type"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Customer type": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_concentration.target_customer_percent": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_concentration",
+			          "ConceptualProperty": "target_customer_percent"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Top customer percentile": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_concentration.pareto_customer_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_concentration",
+			          "ConceptualProperty": "Pareto Customer Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Actual customer share": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_customer_concentration.pareto_sales_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_customer_concentration",
+			          "ConceptualProperty": "Pareto Sales Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cumulative sales share": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_cohorts.m3_return_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_cohorts",
+			          "ConceptualProperty": "M3 Return Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "M3 return rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_cohorts.cohort_coverage_note": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_cohorts",
+			          "ConceptualProperty": "Cohort Coverage Note"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Selected common M1-M3 population": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_cohorts.cohort_month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_cohorts",
+			          "ConceptualProperty": "cohort_month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Acquisition cohort": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_cohorts.month_index": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_cohorts",
+			          "ConceptualProperty": "month_index"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Calendar months after acquisition": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_cohorts.cohort_cell_text": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_cohorts",
+			          "ConceptualProperty": "Cohort Cell Text"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Observed return / coverage": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_cohorts.m1_return_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_cohorts",
+			          "ConceptualProperty": "M1 Return Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "M1 return rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_cohorts.m2_return_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_cohorts",
+			          "ConceptualProperty": "M2 Return Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "M2 return rate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_cohorts.new_cohort_customers": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_cohorts",
+			          "ConceptualProperty": "New Cohort Customers"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "New cohort customers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_repeat_timing.metric": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_repeat_timing",
+			          "ConceptualProperty": "metric"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "First-to-second interval": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Repeat timing threshold": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_repeat_timing.repeat_interval_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_repeat_timing",
+			          "ConceptualProperty": "Repeat Interval Count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Observed repeat customers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_repeat_timing.median_days_to_second_purchase": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_repeat_timing",
+			          "ConceptualProperty": "Median Days to Second Purchase"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Observed repeat customers only; denominator = 2,801.": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_repeat_timing.repeat_window_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_repeat_timing",
+			          "ConceptualProperty": "Repeat Window Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Observed repeat customers within threshold": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_categories.customer_type": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_categories",
+			          "ConceptualProperty": "customer_type"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Customer type": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_categories.category_customer_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_categories",
+			          "ConceptualProperty": "Category Customer Count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Category customers": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_categories.product_category_name_english": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_categories",
+			          "ConceptualProperty": "product_category_name_english"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "English category": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_category_transition.behavior_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_category_transition",
+			          "ConceptualProperty": "behavior_display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Observed category continuity": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dashboard_category_transition.firsttosecond_transition_share": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dashboard_category_transition",
+			          "ConceptualProperty": "First-to-Second Transition Share"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Share of observed first-to-second pairs": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

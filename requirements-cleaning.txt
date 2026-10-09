@@ -1,0 +1,7 @@
+# Exact versions installed and tested in the project's Python 3.12 virtual environment.
+# Tests use unittest from the Python standard library.
+numpy==2.5.3
+pandas==3.0.1
+python-dateutil==2.9.0.post0
+six==1.17.0
+tzdata==2026.5

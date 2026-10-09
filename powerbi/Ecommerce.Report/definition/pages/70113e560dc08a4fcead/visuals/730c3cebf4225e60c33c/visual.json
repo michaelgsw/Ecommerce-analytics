@@ -1,0 +1,298 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "730c3cebf4225e60c33c",
+  "position": {
+    "x": 16,
+    "y": 416,
+    "z": 2000,
+    "height": 284,
+    "width": 1088,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_customer_segments"
+                    }
+                  },
+                  "Property": "customer_type"
+                }
+              },
+              "queryRef": "dashboard_customer_segments.customer_type",
+              "nativeQueryRef": "customer_type",
+              "active": true,
+              "displayName": "Customer type"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_segments"
+                        }
+                      },
+                      "Property": "average_customer_sales_hundredths_numerator"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dashboard_customer_segments.average_customer_sales_hundredths_numerator)",
+              "nativeQueryRef": "Sum of average_customer_sales_hundredths_numerator",
+              "displayName": "Customer sales numerator (hundredths)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_segments"
+                        }
+                      },
+                      "Property": "average_customer_sales_hundredths_denominator"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dashboard_customer_segments.average_customer_sales_hundredths_denominator)",
+              "nativeQueryRef": "Sum of average_customer_sales_hundredths_denominator",
+              "displayName": "Customer sales denominator"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_segments"
+                        }
+                      },
+                      "Property": "average_order_value_hundredths_numerator"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dashboard_customer_segments.average_order_value_hundredths_numerator)",
+              "nativeQueryRef": "Sum of average_order_value_hundredths_numerator",
+              "displayName": "Order value numerator (hundredths)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_segments"
+                        }
+                      },
+                      "Property": "average_order_value_hundredths_denominator"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dashboard_customer_segments.average_order_value_hundredths_denominator)",
+              "nativeQueryRef": "Sum of average_order_value_hundredths_denominator",
+              "displayName": "Order value denominator"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_segments"
+                        }
+                      },
+                      "Property": "customers"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dashboard_customer_segments.customers)",
+              "nativeQueryRef": "Sum of customers",
+              "displayName": "Customers"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_segments"
+                        }
+                      },
+                      "Property": "completed_orders"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dashboard_customer_segments.completed_orders)",
+              "nativeQueryRef": "Sum of completed_orders",
+              "displayName": "Completed orders"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_customer_segments"
+                    }
+                  },
+                  "Property": "Average Customer Sales (source units)"
+                }
+              },
+              "queryRef": "dashboard_customer_segments.Average Customer Sales (source units)",
+              "nativeQueryRef": "Average Customer Sales (source units)",
+              "displayName": "Sales per customer"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_customer_segments"
+                    }
+                  },
+                  "Property": "Segment AOV (source units)"
+                }
+              },
+              "queryRef": "dashboard_customer_segments.Segment AOV (source units)",
+              "nativeQueryRef": "Segment AOV (source units)",
+              "displayName": "Sales per completed order"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dashboard_customer_segments"
+                  }
+                },
+                "Property": "customer_type"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Bottom'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "2L"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sales per customer and AOV - matching weighted denominators'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,139 @@
+table dashboard_customer_concentration
+	lineageTag: 61d7c2a5-4196-45a4-bfba-2fe0c853624c
+
+	measure 'Pareto Customer Share' =
+			IF(HASONEVALUE(dashboard_customer_concentration[target_customer_percent]),
+			   DIVIDE(MAX(dashboard_customer_concentration[actual_customer_percent_numerator]),
+			          100 * MAX(dashboard_customer_concentration[actual_customer_percent_denominator])))
+		formatString: 0.00%
+		lineageTag: 36d66f81-ca04-49d3-bada-9fb88e015ff7
+
+	measure 'Pareto Sales Share' =
+			IF(HASONEVALUE(dashboard_customer_concentration[target_customer_percent]),
+			   DIVIDE(MAX(dashboard_customer_concentration[cumulative_sales_percent_numerator]),
+			          100 * MAX(dashboard_customer_concentration[cumulative_sales_percent_denominator])))
+		formatString: 0.00%
+		lineageTag: 4474faa0-06a6-48c7-a964-2b4845ed591c
+
+	measure 'Customers Needed for 80% Sales' =
+			CALCULATE(MAX(dashboard_customer_concentration[customers_selected]),
+			          REMOVEFILTERS(dashboard_customer_concentration),
+			          dashboard_customer_concentration[record_type] = "sales_80_threshold")
+		lineageTag: 242811b1-0c49-443e-a285-08c0954f6716
+
+	measure 'Customer Share Needed for 80% Sales' =
+			CALCULATE(
+			    DIVIDE(MAX(dashboard_customer_concentration[actual_customer_percent_numerator]),
+			           100 * MAX(dashboard_customer_concentration[actual_customer_percent_denominator])),
+			    REMOVEFILTERS(dashboard_customer_concentration),
+			    dashboard_customer_concentration[record_type] = "sales_80_threshold")
+		lineageTag: e044a0a0-c5d6-4a8f-9ff2-50f40c98bdd8
+
+	column record_type
+		dataType: string
+		lineageTag: 97480309-b1f2-4b53-8a41-1e827b25e98b
+		summarizeBy: none
+		sourceColumn: record_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_customer_percent
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e20e174-10b6-40ba-bf5a-ce2f73cb597e
+		summarizeBy: sum
+		sourceColumn: target_customer_percent
+
+		annotation SummarizationSetBy = Automatic
+
+	column customers_selected
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b561376-ae66-4d13-bb91-3772b3734758
+		summarizeBy: sum
+		sourceColumn: customers_selected
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_sales_hundredths
+		dataType: int64
+		formatString: 0
+		lineageTag: b4b5c6b9-4c12-4cbb-8c11-e38ffa87ecd5
+		summarizeBy: sum
+		sourceColumn: item_sales_hundredths
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_customer_percent_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: 2612dedb-bd49-48c7-aad3-d94645108d26
+		summarizeBy: sum
+		sourceColumn: actual_customer_percent_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_customer_percent_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: 5ee203e5-20a1-4407-b19b-6cba75bca222
+		summarizeBy: sum
+		sourceColumn: actual_customer_percent_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column cumulative_sales_percent_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: bf94db9e-f158-45bf-900f-079bae88fdb6
+		summarizeBy: sum
+		sourceColumn: cumulative_sales_percent_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column cumulative_sales_percent_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: 25680694-5fef-4dd0-998d-2f079c00f8d7
+		summarizeBy: sum
+		sourceColumn: cumulative_sales_percent_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column cutoff_customer_sales_hundredths
+		dataType: int64
+		formatString: 0
+		lineageTag: d5819e8f-0f37-46d0-abf7-cb7ca966d08a
+		summarizeBy: sum
+		sourceColumn: cutoff_customer_sales_hundredths
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_sales_percent
+		dataType: int64
+		formatString: 0
+		lineageTag: 476966f0-de78-4955-8df8-3320cf79c6ae
+		summarizeBy: sum
+		sourceColumn: target_sales_percent
+
+		annotation SummarizationSetBy = Automatic
+
+	column highlight_top_group
+		dataType: int64
+		formatString: 0
+		lineageTag: 3cbeb67e-99e1-44bd-a451-a2811ac63500
+		summarizeBy: sum
+		sourceColumn: highlight_top_group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dashboard_customer_concentration = m
+		mode: import
+		source =
+				let
+				    Source = DashboardCsv("dashboard_customer_concentration")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

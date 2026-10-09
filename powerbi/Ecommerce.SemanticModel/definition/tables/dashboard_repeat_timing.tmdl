@@ -1,0 +1,121 @@
+table dashboard_repeat_timing
+	lineageTag: f85bfa04-dd07-40bb-bc0b-7a52452b0f19
+
+	measure 'Repeat Summary Value' =
+			IF(SELECTEDVALUE(dashboard_repeat_timing[record_type]) = "summary",
+			   DIVIDE(SELECTEDVALUE(dashboard_repeat_timing[numerator]), SELECTEDVALUE(dashboard_repeat_timing[denominator])))
+		lineageTag: 6a5cae81-31f5-4782-99cb-78b7df1e8acb
+
+	measure 'Median Days to Second Purchase' =
+			CALCULATE([Repeat Summary Value], REMOVEFILTERS(dashboard_repeat_timing),
+			          dashboard_repeat_timing[record_type] = "summary",
+			          dashboard_repeat_timing[metric] = "median_days_to_second_purchase")
+		formatString: 0.0
+		lineageTag: 2ee0bda1-6520-4e11-86bc-4980f6ae9a23
+
+	measure 'Repeat Window Share' = IF(SELECTEDVALUE(dashboard_repeat_timing[unit]) = "percent", DIVIDE([Repeat Summary Value], 100))
+		formatString: 0.00%
+		lineageTag: 7fc98020-1358-43f1-82b4-3ec3b446c48a
+
+	measure 'Repeat Interval Count' =
+			IF(SELECTEDVALUE(dashboard_repeat_timing[record_type]) = "interval_bin"
+			   && HASONEVALUE(dashboard_repeat_timing[scope]), SUM(dashboard_repeat_timing[count]))
+		formatString: #,##0
+		lineageTag: 64ef1c92-2835-449d-9a43-e95a923f1722
+
+	column record_type
+		dataType: string
+		lineageTag: 842f8606-93fa-495e-b775-5dda65acb261
+		summarizeBy: none
+		sourceColumn: record_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column scope
+		dataType: string
+		lineageTag: b8d66154-d022-4bee-b253-b4112a73f4dd
+		summarizeBy: none
+		sourceColumn: scope
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric
+		dataType: string
+		lineageTag: fbe347e1-b8b3-42b3-ad8d-7c7ddda3cc0d
+		summarizeBy: none
+		sourceColumn: metric
+
+		annotation SummarizationSetBy = Automatic
+
+	column sort_order
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d50ab17-0b23-4c3a-90dd-411dc4886b01
+		summarizeBy: sum
+		sourceColumn: sort_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column count
+		dataType: int64
+		formatString: 0
+		lineageTag: 434d4e8d-3f5c-4012-9654-8599e2ef9ca4
+		summarizeBy: sum
+		sourceColumn: count
+
+		annotation SummarizationSetBy = Automatic
+
+	column numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: 19a1c872-15d1-432a-a8eb-1b5cc68724b0
+		summarizeBy: sum
+		sourceColumn: numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: 8eda70cb-e460-4cfa-ad51-26aa946adb21
+		summarizeBy: sum
+		sourceColumn: denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: d65ff172-c996-4f14-8148-9e6173e12eff
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column min_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 821b7463-2f84-4498-b7b0-c603f82add53
+		summarizeBy: sum
+		sourceColumn: min_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column max_days
+		dataType: int64
+		formatString: 0
+		lineageTag: c258a9af-4471-4eac-8e74-148740967d2a
+		summarizeBy: sum
+		sourceColumn: max_days
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dashboard_repeat_timing = m
+		mode: import
+		source =
+				let
+				    Source = DashboardCsv("dashboard_repeat_timing")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

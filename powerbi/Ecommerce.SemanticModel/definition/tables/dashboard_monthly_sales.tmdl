@@ -1,0 +1,170 @@
+table dashboard_monthly_sales
+	lineageTag: 182d5c53-300b-4216-b874-247a60fdccf7
+
+	measure 'Monthly Chart Sales (source units)' = DIVIDE(SUM(dashboard_monthly_sales[chart_item_sales_hundredths]), 100)
+		formatString: #,##0.00
+		lineageTag: 667a4291-f000-481b-ae23-95f76e473ad1
+
+	measure 'Monthly AOV (source units)' =
+			DIVIDE(SUM(dashboard_monthly_sales[average_order_value_hundredths_numerator]),
+			       100 * SUM(dashboard_monthly_sales[average_order_value_hundredths_denominator]))
+		formatString: #,##0.00
+		lineageTag: 1137fb28-ac34-4465-98f1-dd6b8bd66c27
+
+	column month
+		dataType: string
+		lineageTag: 302f06ad-6870-4092-92bf-3781f427df28
+		summarizeBy: none
+		sourceColumn: month
+		sortByColumn: month_date
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column all_orders
+		dataType: int64
+		formatString: 0
+		lineageTag: 578c2ec8-2c8d-4b3d-98f1-2ec2632621b1
+		summarizeBy: sum
+		sourceColumn: all_orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column completed_orders
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d06f521-4319-483b-8204-65709a9837d2
+		summarizeBy: sum
+		sourceColumn: completed_orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column distinct_customers
+		dataType: int64
+		formatString: 0
+		lineageTag: 23f4e182-bc23-49c9-b9a0-49a4d6af851a
+		summarizeBy: sum
+		sourceColumn: distinct_customers
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_sales_hundredths
+		dataType: int64
+		formatString: 0
+		lineageTag: e62f7361-fbd1-451a-9879-7c435de52545
+		summarizeBy: sum
+		sourceColumn: item_sales_hundredths
+
+		annotation SummarizationSetBy = Automatic
+
+	column average_order_value_hundredths_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: 22d0f315-b09d-419b-925c-54f2bb96498b
+		summarizeBy: sum
+		sourceColumn: average_order_value_hundredths_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column average_order_value_hundredths_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: bf463b1d-e7af-4e3f-b346-b0ad95f24c41
+		summarizeBy: sum
+		sourceColumn: average_order_value_hundredths_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_extract_boundary_month
+		dataType: int64
+		formatString: 0
+		lineageTag: 6476bc90-acc6-4795-8315-29815a3e2869
+		summarizeBy: sum
+		sourceColumn: flag_extract_boundary_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_completed_sales_boundary_month
+		dataType: int64
+		formatString: 0
+		lineageTag: b9069d9f-1316-4a8e-b895-7fecb5867d98
+		summarizeBy: sum
+		sourceColumn: flag_completed_sales_boundary_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_no_observed_orders
+		dataType: int64
+		formatString: 0
+		lineageTag: 4d52ca1e-d988-4848-a9c1-9b2772719d61
+		summarizeBy: sum
+		sourceColumn: flag_no_observed_orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column flag_mom_comparable
+		dataType: int64
+		formatString: 0
+		lineageTag: 11fb4f2e-d373-4526-9908-37eea90fa172
+		summarizeBy: sum
+		sourceColumn: flag_mom_comparable
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_sales_mom_percent_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: 53dc28ae-5c67-4e35-b459-a296e6bd3111
+		summarizeBy: sum
+		sourceColumn: item_sales_mom_percent_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_sales_mom_percent_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: f6224afa-2483-42c6-b672-b00becc99625
+		summarizeBy: sum
+		sourceColumn: item_sales_mom_percent_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: aba003a1-4083-4227-9369-38599910e6e3
+		summarizeBy: none
+		sourceColumn: month_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column coverage_status
+		dataType: string
+		lineageTag: 79d0ac14-0ac0-43c9-a942-b29c5441617a
+		summarizeBy: none
+		sourceColumn: coverage_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column chart_item_sales_hundredths
+		dataType: int64
+		formatString: 0
+		lineageTag: 54b76e96-efbb-4257-b53e-b5d9cbdb9d8f
+		summarizeBy: sum
+		sourceColumn: chart_item_sales_hundredths
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dashboard_monthly_sales = m
+		mode: import
+		source =
+				let
+				    Source = DashboardCsv("dashboard_monthly_sales")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

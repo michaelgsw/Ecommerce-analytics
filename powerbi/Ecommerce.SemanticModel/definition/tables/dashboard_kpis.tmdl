@@ -1,0 +1,162 @@
+table dashboard_kpis
+	lineageTag: 2c8678c3-bf13-48a6-b422-e2034230e71a
+
+	measure 'KPI Value' =
+			
+			DIVIDE(SELECTEDVALUE(dashboard_kpis[numerator]), SELECTEDVALUE(dashboard_kpis[denominator]))
+		lineageTag: 0454cc76-8257-43f0-8a5d-1ab7aed58a36
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Completed Orders' =
+			
+			CALCULATE([KPI Value], REMOVEFILTERS(dashboard_kpis), dashboard_kpis[metric_key] = "completed_orders")
+		formatString: 0
+		lineageTag: a88daf63-99a4-4945-b826-a8e4748e4b23
+
+	measure 'Unique Completed Customers' =
+			
+			CALCULATE([KPI Value], REMOVEFILTERS(dashboard_kpis), dashboard_kpis[metric_key] = "unique_completed_customers")
+		formatString: 0
+		lineageTag: 9d35c4a3-e7b6-41d9-9e8c-75870bb7605a
+
+	measure 'Observed Item Sales (hundredths)' =
+			
+			CALCULATE([KPI Value], REMOVEFILTERS(dashboard_kpis), dashboard_kpis[metric_key] = "observed_item_sales")
+		lineageTag: d65b7ec3-bb2e-40b6-98bc-02a853887d88
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Observed Item Sales (source units)' =
+			
+			DIVIDE([Observed Item Sales (hundredths)], 100)
+		lineageTag: 1286489c-c3d9-4dfe-86aa-f6e7ba2c6f5b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Order Value (hundredths)' = CALCULATE([KPI Value], REMOVEFILTERS(dashboard_kpis), dashboard_kpis[metric_key] = "average_order_value")
+		formatString: #,##0.00
+		lineageTag: f3352de7-62e1-4705-8ffe-40b7a486267d
+
+	measure 'Average Order Value (source units)' = DIVIDE([Average Order Value (hundredths)], 100)
+		formatString: #,##0.00
+		lineageTag: aa67c868-b7d8-42f0-9620-cbe8c8723b5a
+
+	measure 'Observed Repeat Customer Rate' = DIVIDE(CALCULATE([KPI Value], REMOVEFILTERS(dashboard_kpis), dashboard_kpis[metric_key] = "repeat_customer_rate"), 100)
+		formatString: 0.00%
+		lineageTag: 48a6f729-4553-4316-a04f-c125dd36a592
+
+	measure 'Delivered Order Rate' = DIVIDE(CALCULATE([KPI Value], REMOVEFILTERS(dashboard_kpis), dashboard_kpis[metric_key] = "delivered_order_rate"), 100)
+		formatString: 0.00%
+		lineageTag: b78fb7c7-e8a6-459a-a68a-93d14c982606
+
+	measure 'All Observed Orders' = CALCULATE([KPI Value], REMOVEFILTERS(dashboard_kpis), dashboard_kpis[metric_key] = "all_orders")
+		formatString: #,##0
+		lineageTag: be4d60f6-fdf7-4e6b-b4a2-9624e692ef51
+
+	column metric_key
+		dataType: string
+		lineageTag: 8dc3698a-0b17-4006-828a-14dfeab3c2a5
+		summarizeBy: none
+		sourceColumn: metric_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric_label
+		dataType: string
+		lineageTag: 31538550-e3d4-4bb2-aba4-712575de8830
+		summarizeBy: none
+		sourceColumn: metric_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column population
+		dataType: string
+		lineageTag: 804599ee-e776-44b6-bfe0-29f73007ffe3
+		summarizeBy: none
+		sourceColumn: population
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: 8eb8e590-a480-4071-bbc1-c4d525be024a
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: 44c4d76e-7428-4d76-952d-83c667fb1936
+		summarizeBy: sum
+		sourceColumn: numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: fcaa157e-f8fc-4145-b4f4-be2e57d434b1
+		summarizeBy: sum
+		sourceColumn: denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column display_value_text
+		dataType: string
+		lineageTag: 2cbc0db4-2e62-4981-89eb-c3b65a848af2
+		summarizeBy: none
+		sourceColumn: display_value_text
+
+		annotation SummarizationSetBy = Automatic
+
+	column completed_window_start_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 36979eb4-ea31-4ec4-9288-d46856d1d1d6
+		summarizeBy: none
+		sourceColumn: completed_window_start_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column completed_window_end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: eb8544d0-ef77-4acd-8aac-899fe9c03bb8
+		summarizeBy: none
+		sourceColumn: completed_window_end_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column metric_window_start_month
+		dataType: string
+		lineageTag: 9dff06ce-fd4a-4439-84dd-42694017fba6
+		summarizeBy: none
+		sourceColumn: metric_window_start_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric_window_end_month
+		dataType: string
+		lineageTag: 670891fe-fde4-497f-821e-039226d991ab
+		summarizeBy: none
+		sourceColumn: metric_window_end_month
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dashboard_kpis = m
+		mode: import
+		source =
+				let
+				    Source = DashboardCsv("dashboard_kpis")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

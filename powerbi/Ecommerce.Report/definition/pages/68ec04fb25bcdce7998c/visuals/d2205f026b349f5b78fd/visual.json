@@ -1,0 +1,437 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "d2205f026b349f5b78fd",
+  "position": {
+    "x": 16,
+    "y": 360,
+    "z": 6000,
+    "height": 344,
+    "width": 1264,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_monthly_sales"
+                    }
+                  },
+                  "Property": "month"
+                }
+              },
+              "queryRef": "dashboard_monthly_sales.month",
+              "nativeQueryRef": "month",
+              "active": true,
+              "displayName": "Purchase month"
+            }
+          ],
+          "showAll": true
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_monthly_sales"
+                        }
+                      },
+                      "Property": "month_date"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(dashboard_monthly_sales.month_date)",
+              "nativeQueryRef": "Min of month_date",
+              "displayName": "Purchase month date",
+              "format": "yyyy-MM-dd"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_monthly_sales"
+                        }
+                      },
+                      "Property": "item_sales_hundredths"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dashboard_monthly_sales.item_sales_hundredths)",
+              "nativeQueryRef": "Sum of item_sales_hundredths",
+              "displayName": "Original observed item sales (hundredths)",
+              "format": "#,##0"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_monthly_sales"
+                        }
+                      },
+                      "Property": "completed_orders"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dashboard_monthly_sales.completed_orders)",
+              "nativeQueryRef": "Sum of completed_orders",
+              "displayName": "Delivered orders",
+              "format": "#,##0"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_monthly_sales"
+                        }
+                      },
+                      "Property": "distinct_customers"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(dashboard_monthly_sales.distinct_customers)",
+              "nativeQueryRef": "Sum of distinct_customers",
+              "displayName": "Monthly distinct customers",
+              "format": "#,##0"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_monthly_sales"
+                    }
+                  },
+                  "Property": "Monthly AOV (source units)"
+                }
+              },
+              "queryRef": "dashboard_monthly_sales.Monthly AOV (source units)",
+              "nativeQueryRef": "Monthly AOV (source units)",
+              "displayName": "Monthly AOV (source units)",
+              "format": "#,##0.00"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_monthly_sales"
+                        }
+                      },
+                      "Property": "coverage_status"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Min(dashboard_monthly_sales.coverage_status)",
+              "nativeQueryRef": "Min of coverage_status",
+              "displayName": "Coverage status"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_monthly_sales"
+                        }
+                      },
+                      "Property": "flag_extract_boundary_month"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_monthly_sales.flag_extract_boundary_month)",
+              "nativeQueryRef": "Max of flag_extract_boundary_month",
+              "displayName": "extract boundary month",
+              "format": "0"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_monthly_sales"
+                        }
+                      },
+                      "Property": "flag_completed_sales_boundary_month"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_monthly_sales.flag_completed_sales_boundary_month)",
+              "nativeQueryRef": "Max of flag_completed_sales_boundary_month",
+              "displayName": "completed sales boundary month",
+              "format": "0"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_monthly_sales"
+                        }
+                      },
+                      "Property": "flag_no_observed_orders"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_monthly_sales.flag_no_observed_orders)",
+              "nativeQueryRef": "Max of flag_no_observed_orders",
+              "displayName": "no observed orders",
+              "format": "0"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_monthly_sales"
+                        }
+                      },
+                      "Property": "flag_mom_comparable"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_monthly_sales.flag_mom_comparable)",
+              "nativeQueryRef": "Max of flag_mom_comparable",
+              "displayName": "mom comparable",
+              "format": "0"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_monthly_sales"
+                    }
+                  },
+                  "Property": "Monthly Chart Sales (source units)"
+                }
+              },
+              "queryRef": "dashboard_monthly_sales.Monthly Chart Sales (source units)",
+              "nativeQueryRef": "Monthly Chart Sales (source units)",
+              "displayName": "Delivered item sales (source units)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "dashboard_monthly_sales"
+                      }
+                    },
+                    "Property": "month_date"
+                  }
+                },
+                "Function": 3
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "axisType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Categorical'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10.5D"
+                }
+              }
+            },
+            "preferredCategoryWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1000000D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "1L"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Item sales (millions of source units)'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "defaultColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#168C82'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Monthly observed item sales - delivered orders'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

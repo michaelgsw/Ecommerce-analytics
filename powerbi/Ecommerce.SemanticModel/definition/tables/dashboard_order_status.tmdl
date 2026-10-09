@@ -1,0 +1,85 @@
+table dashboard_order_status
+	lineageTag: ec12a4a5-be14-4492-94d5-6cfe2a157e1f
+
+	measure 'Status Order Count' = SUM(dashboard_order_status[orders])
+		formatString: #,##0
+		lineageTag: f0f32306-9323-4a1d-bab7-ccc4a65730c0
+
+	measure 'Status Share of All Orders' =
+			DIVIDE(SUM(dashboard_order_status[status_share_percent_numerator]),
+			       100 * MAX(dashboard_order_status[status_share_percent_denominator]))
+		formatString: #,##0
+		lineageTag: e7022469-ced7-4e7b-9ea6-5737c2b982bb
+
+	column order_status
+		dataType: string
+		lineageTag: f056a1d9-e1ec-467d-b963-f738aa5744f4
+		summarizeBy: none
+		sourceColumn: order_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column orders
+		dataType: int64
+		formatString: 0
+		lineageTag: d48b4363-d686-4caf-bbe9-f63738cbd25e
+		summarizeBy: sum
+		sourceColumn: orders
+
+		annotation SummarizationSetBy = Automatic
+
+	column status_share_percent_numerator
+		dataType: int64
+		formatString: 0
+		lineageTag: f1f4a957-4ded-4c84-b6e6-b6b06bea65cd
+		summarizeBy: sum
+		sourceColumn: status_share_percent_numerator
+
+		annotation SummarizationSetBy = Automatic
+
+	column status_share_percent_denominator
+		dataType: int64
+		formatString: 0
+		lineageTag: 168f004e-271c-4e7d-b889-db9ba0a15902
+		summarizeBy: sum
+		sourceColumn: status_share_percent_denominator
+
+		annotation SummarizationSetBy = Automatic
+
+	column orders_missing_items
+		dataType: int64
+		formatString: 0
+		lineageTag: 5b5e3aaf-bc20-4b65-8fed-f4ab3f317a21
+		summarizeBy: sum
+		sourceColumn: orders_missing_items
+
+		annotation SummarizationSetBy = Automatic
+
+	column orders_missing_payments
+		dataType: int64
+		formatString: 0
+		lineageTag: c7b78cf1-fdc1-435a-a880-1c39a5b3525a
+		summarizeBy: sum
+		sourceColumn: orders_missing_payments
+
+		annotation SummarizationSetBy = Automatic
+
+	column orders_missing_reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: 4f76636a-1c00-48b6-915d-f776dc600f63
+		summarizeBy: sum
+		sourceColumn: orders_missing_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dashboard_order_status = m
+		mode: import
+		source =
+				let
+				    Source = DashboardCsv("dashboard_order_status")
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

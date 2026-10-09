@@ -1,0 +1,27 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: zh-CN
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["DashboardFolder","DashboardCsv","dashboard_kpis","dashboard_monthly_sales","dashboard_customer_segments","dashboard_customer_concentration","dashboard_cohorts","dashboard_repeat_timing","dashboard_categories","dashboard_category_transition","dashboard_order_status"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dashboard_kpis
+ref table dashboard_monthly_sales
+ref table dashboard_customer_segments
+ref table dashboard_customer_concentration
+ref table dashboard_cohorts
+ref table dashboard_repeat_timing
+ref table dashboard_categories
+ref table dashboard_category_transition
+ref table dashboard_order_status
+
+ref cultureInfo en-US
+

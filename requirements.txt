@@ -1,0 +1,13 @@
+# Initial dependencies; validate and pin versions before the first pipeline release.
+# SQLite support is included in Python through the sqlite3 standard library module.
+
+# Tabular data preparation and Excel input
+pandas
+openpyxl
+
+# Charts for exploratory analysis and the business report
+matplotlib
+seaborn
+
+# Interactive notebooks
+jupyterlab

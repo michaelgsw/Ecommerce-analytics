@@ -1,0 +1,431 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "23a97e2efda58c6e33c1",
+  "position": {
+    "x": 1120,
+    "y": 136,
+    "z": 3000,
+    "height": 304,
+    "width": 784,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_customer_concentration"
+                    }
+                  },
+                  "Property": "target_customer_percent"
+                }
+              },
+              "queryRef": "dashboard_customer_concentration.target_customer_percent",
+              "nativeQueryRef": "target_customer_percent",
+              "active": true,
+              "displayName": "Top customer percentile"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_customer_concentration"
+                    }
+                  },
+                  "Property": "Pareto Customer Share"
+                }
+              },
+              "queryRef": "dashboard_customer_concentration.Pareto Customer Share",
+              "nativeQueryRef": "Pareto Customer Share",
+              "displayName": "Actual customer share"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_concentration"
+                        }
+                      },
+                      "Property": "customers_selected"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_customer_concentration.customers_selected)",
+              "nativeQueryRef": "Max of customers_selected",
+              "displayName": "Customers selected"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_concentration"
+                        }
+                      },
+                      "Property": "item_sales_hundredths"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_customer_concentration.item_sales_hundredths)",
+              "nativeQueryRef": "Max of item_sales_hundredths",
+              "displayName": "Item sales (hundredths)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_concentration"
+                        }
+                      },
+                      "Property": "cutoff_customer_sales_hundredths"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_customer_concentration.cutoff_customer_sales_hundredths)",
+              "nativeQueryRef": "Max of cutoff_customer_sales_hundredths",
+              "displayName": "Cutoff sales (hundredths)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_concentration"
+                        }
+                      },
+                      "Property": "actual_customer_percent_numerator"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_customer_concentration.actual_customer_percent_numerator)",
+              "nativeQueryRef": "Max of actual_customer_percent_numerator",
+              "displayName": "Actual-customer-share numerator"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_concentration"
+                        }
+                      },
+                      "Property": "actual_customer_percent_denominator"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_customer_concentration.actual_customer_percent_denominator)",
+              "nativeQueryRef": "Max of actual_customer_percent_denominator",
+              "displayName": "Actual-customer-share denominator"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_concentration"
+                        }
+                      },
+                      "Property": "cumulative_sales_percent_numerator"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_customer_concentration.cumulative_sales_percent_numerator)",
+              "nativeQueryRef": "Max of cumulative_sales_percent_numerator",
+              "displayName": "Cumulative-sales-share numerator"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "dashboard_customer_concentration"
+                        }
+                      },
+                      "Property": "cumulative_sales_percent_denominator"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Max(dashboard_customer_concentration.cumulative_sales_percent_denominator)",
+              "nativeQueryRef": "Max of cumulative_sales_percent_denominator",
+              "displayName": "Cumulative-sales-share denominator"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dashboard_customer_concentration"
+                    }
+                  },
+                  "Property": "Pareto Sales Share"
+                }
+              },
+              "queryRef": "dashboard_customer_concentration.Pareto Sales Share",
+              "nativeQueryRef": "Pareto Sales Share",
+              "displayName": "Cumulative sales share"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dashboard_customer_concentration"
+                  }
+                },
+                "Property": "target_customer_percent"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "axisType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Scalar'"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Target top customer percentile (ceil N*p/100)'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "start": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "end": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "lineStyles": [
+        {
+          "properties": {
+            "lineChartType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'linear'"
+                }
+              }
+            },
+            "strokeWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "showMarker": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cumulative item sales by top customers - full observed history'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filterf291eb14460ec4deb4cba12a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dashboard_customer_concentration"
+              }
+            },
+            "Property": "record_type"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "dashboard_customer_concentration",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "record_type"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'pareto_point'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isLockedInViewMode": true
+      }
+    ]
+  }
+}
